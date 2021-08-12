@@ -2,8 +2,7 @@ import { getPkgReleases } from '..';
 import * as httpMock from '../../../test/http-mock';
 import { getName, loadFixture, loadJsonFixture } from '../../../test/util';
 import * as rubyVersioning from '../../versioning/ruby';
-import { resetCache } from './get-rubygems-org';
-import * as rubygems from '.';
+import { RubyGemsDatasource, resetCache } from '.';
 
 const rubygemsOrgVersions = loadFixture('rubygems-org.txt');
 const railsInfo = loadJsonFixture('rails/info.json');
@@ -15,7 +14,7 @@ describe(getName(), () => {
 
     const params = {
       versioning: rubyVersioning.id,
-      datasource: rubygems.id,
+      datasource: RubyGemsDatasource.id,
       depName: 'rails',
       registryUrls: [
         'https://thirdparty.com',
